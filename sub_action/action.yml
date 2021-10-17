@@ -10,6 +10,8 @@ runs:
     - name: Download common external libs
       id: subsub
       uses: Silverlan/github_action_test2/sub_sub_action@main
+      with:
+        input_var: 5555
     - name: Clone
       shell: bash
       id: clone
