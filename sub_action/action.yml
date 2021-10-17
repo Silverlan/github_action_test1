@@ -15,5 +15,5 @@ runs:
       id: clone
       run: |
         echo "SubSubOutput: ${{ steps.subsub.outputs.output_var }}"
-        echo "::set-output name=output_var::5678
+        echo "::set-output name=output_var::5678"
 
