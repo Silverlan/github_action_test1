@@ -12,17 +12,17 @@ runs:
       uses: Silverlan/github_action_test2/sub_sub_action@main
       with:
         definitions: ''
-        input_var: def1
+        input_var: -DEPENDENCY_SHAREDUTILS_INCLUDE=/inc
     - name: SubSub2
       id: subsub2
       uses: Silverlan/github_action_test2/sub_sub_action@main
       with:
         definitions: ${{ steps.subsub1.outputs.output_var }}
-        input_var: def2
+        input_var: -DEPENDENCY_MATHUTIL_INCLUDE=/inc
     - name: Clone
       shell: bash
       id: clone
       run: |
         # echo "SubSubOutput: ${{ steps.subsub2.outputs.output_var }}"
-        echo "::set-output name=output_var::${{ steps.subsub2.outputs.output_var }}"
+        # echo "::set-output name=output_var::${{ steps.subsub2.outputs.output_var }}"
 
