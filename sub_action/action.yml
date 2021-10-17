@@ -7,15 +7,22 @@ outputs:
 runs:
   using: "composite"
   steps: 
-    - name: Download common external libs
-      id: subsub
+    - name: SubSub1
+      id: subsub1
       uses: Silverlan/github_action_test2/sub_sub_action@main
       with:
-        input_var: 5555
+        definitions: ''
+        input_var: def1
+    - name: SubSub2
+      id: subsub2
+      uses: Silverlan/github_action_test2/sub_sub_action@main
+      with:
+        definitions: ${{ steps.subsub1.outputs.output_var }}
+        input_var: def2
     - name: Clone
       shell: bash
       id: clone
       run: |
-        echo "SubSubOutput: ${{ steps.subsub.outputs.output_var }}"
-        echo "::set-output name=output_var::${{ steps.subsub.outputs.output_var }}5678"
+        # echo "SubSubOutput: ${{ steps.subsub2.outputs.output_var }}"
+        echo "::set-output name=output_var::${{ steps.subsub2.outputs.output_var }}"
 
