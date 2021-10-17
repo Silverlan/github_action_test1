@@ -1,0 +1,19 @@
+name: 'Get Submodule'
+description: 'Downloads and builds a git submodule'
+outputs:
+  output_var:
+    description: "CMake definitions output"
+    value: ${{ steps.clone.outputs.output_var }}
+runs:
+  using: "composite"
+  steps: 
+    - name: Download common external libs
+      id: subsub
+      uses: Silverlan/github_action_test2/sub_sub_action@main
+    - name: Clone
+      shell: bash
+      id: clone
+      run: |
+        echo "SubSubOutput: ${{ steps.subsub.outputs.output_var }}"
+        echo "::set-output name=output_var::5678
+
